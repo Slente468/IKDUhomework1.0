@@ -6,8 +6,11 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private Transform groundCheckTransform = null;
     [SerializeField] private LayerMask playerMask;
-    
+    [SerializeField] private float movmentSpeed = 5;
     //bool is checking whether it's true or false
+    // also yes and no
+    //true is 1 
+    // false is 0
     private bool jumpKeyWasPressed;
     private float horizontalInput;
 
@@ -40,7 +43,7 @@ public class Player : MonoBehaviour
     // FixedUpdate is called every time some physics updates 
     private void FixedUpdate()
     {
-        GetComponent<Rigidbody>().velocity = new Vector3(horizontalInput, GetComponent<Rigidbody>().velocity.y, 0);
+        GetComponent<Rigidbody>().velocity = new Vector3(horizontalInput*movmentSpeed, GetComponent<Rigidbody>().velocity.y, 0);
 
         if (Physics.OverlapSphere(groundCheckTransform.position, 0.1f, playerMask).Length == 1)
        
