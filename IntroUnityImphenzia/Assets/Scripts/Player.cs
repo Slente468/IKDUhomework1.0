@@ -14,27 +14,56 @@ public class Player : MonoBehaviour
     private bool jumpKeyWasPressed;
     private float horizontalInput;
 
-    
+    public string playerName;
+    public int jumpLevel;
+    public int jump;
     
 
     // Start is called before the first frame update
     void Start()
     {
-      
+         playerName = "Time";
+        Debug.Log($"The players name is:  " + playerName);
+
+        jump = 2;
+        jumpLevel = 1;
+
+        
+
+
+
     }
+
+   
 
     // Update is called once per frame
     void Update()
     {
+       
         // tjek om space er presset ned
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("space is pressed down");
             jumpKeyWasPressed = true;
 
+            jumpLevel = jumpLevel + jump;
+            CharacterVal(playerName , jumpLevel);
             // 
 
             horizontalInput = Input.GetAxis("Horizontal");
+
+            
+
+            
+
+           Debug.Log("jump/space key was pressed add 1 to" + jumpLevel);
+
+            
+
+
+
+
+
         }
         
 
@@ -55,6 +84,12 @@ public class Player : MonoBehaviour
             jumpKeyWasPressed = false;
        
 
+    }
+
+    void CharacterVal(string a,int b)
+    {
+        
+       Debug.Log("name" + a + "jump level" +b);
     }
   
 }
